@@ -15,6 +15,7 @@ class Animal: NSObject, Discussable {
     var interestingFact: String = "...searching..."
     var image: UIImage?
     var color: UIColor?
+    var fontImage: Int?
     
     let name: String
     
@@ -25,6 +26,7 @@ class Animal: NSObject, Discussable {
         super.init()
         searchForInterestingFact()
         self.color = UIColor.lightGrayColor()
+        fontImage = 1
     }
     
     private func searchForInterestingFact() {

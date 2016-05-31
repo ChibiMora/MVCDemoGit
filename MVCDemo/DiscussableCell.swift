@@ -7,12 +7,14 @@
 //
 
 import UIKit
+import FontAwesome_swift
 
 protocol Discussable {
     var topic: String { get }
     var interestingFact: String { get }
     var image: UIImage? { get }
     var color: UIColor? { get }
+    var fontImage: Int? {get}
     
     func updateInterestingFact()
 }
@@ -24,18 +26,29 @@ protocol ActiveCell {
 
 class DiscussableCell: UITableViewCell {
         
+    @IBOutlet weak var theButton: UIButton!
+    
     @IBOutlet weak var titleLabel: UILabel!
     
     @IBOutlet weak var factLabel: UILabel!
-    
-    var delegate:ActiveCell?
+    var delegate: ActiveCell?
     var index:Int = 0
+    
     
     func configureWithItem(item: Discussable, index:Int) {
         titleLabel?.text = item.topic
         factLabel?.text = item.interestingFact
         self.backgroundColor = item.color
         self.index = index
+        
+        theButton.titleLabel?.font = UIFont.fontAwesomeOfSize(30)
+        if item.fontImage == 0{
+        theButton.setTitle(String.fontAwesomeIconWithName(.Empire), forState: .Normal)
+        }
+        else {
+             theButton.setTitle(String.fontAwesomeIconWithName(.Joomla), forState: .Normal)
+            
+        }
     }
     
     @IBAction func buttonHit(sender: AnyObject) {

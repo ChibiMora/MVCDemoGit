@@ -15,6 +15,8 @@ class Plant: NSObject, Discussable {
     var interestingFact: String = "...searching..."
     var image: UIImage?
     var color: UIColor?
+    var fontImage: Int?
+    
     
     let name: String
     
@@ -25,6 +27,7 @@ class Plant: NSObject, Discussable {
         super.init()
         searchForInterestingFact()
         self.color = UIColor.greenColor()
+        fontImage = 0
     }
     
     private func searchForInterestingFact() {
